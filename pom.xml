@@ -11,8 +11,11 @@
   <modules>
     <module>school-teacher</module>
     <module>school-student</module>
+    <module>school-common</module>
   </modules>
   <properties>
+    <jackson.version>2.7.4</jackson.version>
+    <fastjson.version>1.2.40</fastjson.version>
     <spring.version>4.3.14.RELEASE</spring.version>
     <commons-lang3.version>3.7</commons-lang3.version>
     <junit.version>4.12</junit.version>

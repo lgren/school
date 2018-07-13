@@ -13,6 +13,17 @@ public class Student {
 
     private Date birthday;
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", realName='" + realName + '\'' +
+                ", birthday=" + birthday +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
