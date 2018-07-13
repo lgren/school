@@ -11,6 +11,13 @@
 
   <groupId>com.lgren.school.teacher</groupId>
   <artifactId>school-teacher</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+    <module>teacher-pojo</module>
+    <module>teacher-dao</module>
+    <module>teacher-service</module>
+    <module>teacher-controller</module>
+  </modules>
 
 
 </project>
