@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--组件扫描(只管Controller层)-->
+    <context:component-scan base-package="com.lgren" use-default-filters="false">
+        <!--只接管Controller层-->
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"></context:include-filter>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"></context:include-filter>
+    </context:component-scan>
+
+    <!--视图解析器: 如何把 handler 方法返回值解析为实际的物理视图-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/page/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+    <!-- 通过 order 属性来定义视图解析器的优先级, order 值越小优先级越高 -->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="10"></property>
+    </bean>
+
+    <!--设置配置方案(如果不要这个加了下边的,Controller层不能正常工作)-->
+    <mvc:annotation-driven/>
+    <!--使用默认的Servlet来响应静态文件(如果不要这个,css,js等文件不能读取)-->
+    <mvc:default-servlet-handler/>
+
+    <!--面对切面编程使用-->
+    <aop:aspectj-autoproxy/>
+</beans>
