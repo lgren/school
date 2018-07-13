@@ -4,33 +4,14 @@ import java.util.Date;
 
 public class Student {
     private Long id;
+
     private String username;
+
     private String password;
+
     private String name;
+
     private Date birthday;
-
-    public Student() {
-    }
-
-    public Student(Long id, String username, String password, String name, Date birthday) {
-
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.birthday = birthday;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", birthday=" + birthday +
-                '}';
-    }
 
     public Long getId() {
         return id;
@@ -45,7 +26,7 @@ public class Student {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -53,7 +34,7 @@ public class Student {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getName() {
@@ -61,7 +42,7 @@ public class Student {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public Date getBirthday() {
