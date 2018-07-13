@@ -9,7 +9,7 @@ public class Student {
 
     private String password;
 
-    private String name;
+    private String realName;
 
     private Date birthday;
 
@@ -37,12 +37,12 @@ public class Student {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
     }
 
     public Date getBirthday() {
