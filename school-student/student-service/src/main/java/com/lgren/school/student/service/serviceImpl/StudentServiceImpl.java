@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service(value = "studentService")
 public class StudentServiceImpl implements IStudentService {
     @Autowired
     private IStudentDao studentDao ;

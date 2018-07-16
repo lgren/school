@@ -1,22 +1,26 @@
 package com.lgren.school.teacher.controller;
 
 import com.lgren.common.vo.CommonResult;
-import com.lgren.school.teacher.pojo.Teacher;
+import com.lgren.school.student.service.IStudentService;
 import com.lgren.school.teacher.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 public class TeacherController {
     @Autowired
     private ITeacherService teacherService;
+    @Autowired
+    private IStudentService studentService;
 
     @RequestMapping(value = "selectAllTeacher.do")
     public CommonResult selectAllTeacher() {
         return new CommonResult(teacherService.selectAll());
+    }
+    @RequestMapping(value = "selectAllStudent.do")
+    public CommonResult selectAllStudent() {
+        return new CommonResult(studentService.selectAll());
     }
 
     @RequestMapping(value = "test")

@@ -14,4 +14,6 @@
 
   <!--面对切面编程使用-->
   <aop:aspectj-autoproxy/>
+
+  <import resource="classpath:dubbo-consumer.xml"/>
 </beans>
