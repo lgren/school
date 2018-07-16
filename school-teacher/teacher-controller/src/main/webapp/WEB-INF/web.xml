@@ -10,7 +10,7 @@
   <!--全局spring配置文件-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext*.xml</param-value>
+    <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
 
   <!--过滤器,用于改变与前端交互的编码格式-->

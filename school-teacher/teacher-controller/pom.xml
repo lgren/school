@@ -52,6 +52,18 @@
       <artifactId>student-pojo</artifactId>
       <version>1.1</version>
     </dependency>
+    <!-- 配置中心 -->
+    <dependency>
+      <groupId>io.github.hengyunabc.xdiamond</groupId>
+      <artifactId>xdiamond-client</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.zookeeper</groupId>
+      <artifactId>zookeeper</artifactId>
+      <version>3.4.9</version>
+    </dependency>
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>dubbo</artifactId>
