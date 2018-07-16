@@ -3,13 +3,14 @@ package com.lgren.school.student.service.serviceImpl;
 import com.lgren.school.student.dao.IStudentDao;
 import com.lgren.school.student.pojo.Student;
 import com.lgren.school.student.service.IStudentService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service(value = "studentService")
 public class StudentServiceImpl implements IStudentService {
+    private Logger logger = Logger.getLogger(StudentServiceImpl.class);
     @Autowired
     private IStudentDao studentDao ;
 
