@@ -14,25 +14,25 @@
 
   <!--面对切面编程使用-->
   <aop:aspectj-autoproxy/>
-  <bean id="xDiamondConfig"
-        class="io.github.xdiamond.client.spring.XDiamondConfigFactoryBean">
-    <property name="serverHost" value="${xdiamond.project.ip:127.0.0.1}" />
-    <property name="serverPort" value="${xdiamond.server.port:5678}" />
-    <property name="groupId" value="com.lgren" />
-    <property name="artifactId" value="school" />
-    <property name="version" value="1.0.0" />
-    <property name="profile" value="${spring.profiles.active:test}" />
-    <property name="secretKey" value="${xdiamond.project.secretkey:}"></property>
-    <property name="bPrintConfigWhenBoot" value="${xdiamond.print.config:true}"></property>
-  </bean>
-  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    <property name="propertiesArray">
-      <util:list>
-        <bean class="java.util.Properties" factory-bean="xDiamondConfig" factory-method="getProperties">
-        </bean>
-      </util:list>
-    </property>
-  </bean>
+  <!--<bean id="xDiamondConfig"-->
+        <!--class="io.github.xdiamond.client.spring.XDiamondConfigFactoryBean">-->
+    <!--<property name="serverHost" value="${xdiamond.project.ip:127.0.0.1}" />-->
+    <!--<property name="serverPort" value="${xdiamond.server.port:5678}" />-->
+    <!--<property name="groupId" value="com.lgren" />-->
+    <!--<property name="artifactId" value="school" />-->
+    <!--<property name="version" value="1.0.0" />-->
+    <!--<property name="profile" value="${spring.profiles.active:test}" />-->
+    <!--<property name="secretKey" value="${xdiamond.project.secretkey:}"></property>-->
+    <!--<property name="bPrintConfigWhenBoot" value="${xdiamond.print.config:true}"></property>-->
+  <!--</bean>-->
+  <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+    <!--<property name="propertiesArray">-->
+      <!--<util:list>-->
+        <!--<bean class="java.util.Properties" factory-bean="xDiamondConfig" factory-method="getProperties">-->
+        <!--</bean>-->
+      <!--</util:list>-->
+    <!--</property>-->
+  <!--</bean>-->
   <import resource="classpath:dubbo-consumer.xml"/>
   <import resource="classpath:applicationContext-springMVC.xml"/>
   <import resource="classpath:applicationContext-mybatis.xml"/>

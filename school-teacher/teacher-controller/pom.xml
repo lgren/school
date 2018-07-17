@@ -91,6 +91,17 @@
       <artifactId>standard</artifactId>
       <version>${standard.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.github.ltsopensource</groupId>
+      <artifactId>lts-spring</artifactId>
+      <version>${lts.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ltsopensource</groupId>
+      <artifactId>lts-core</artifactId>
+      <version>${lts.version}</version>
+    </dependency>
   </dependencies>
 
   <build>

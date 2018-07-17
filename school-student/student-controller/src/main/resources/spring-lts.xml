@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!--<bean id="taskTracker" class="com.github.ltsopensource.spring.TaskTrackerAnnotationFactoryBean" init-method="start">-->
+    <!--<property name="jobRunnerClass" value="com.lgren.school.student.timer.MyJobRunner"/>-->
+    <!--<property name="bizLoggerLevel" value="INFO"/>-->
+    <!--<property name="clusterName" value="test_cluster"/>-->
+    <!--<property name="registryAddress" value="zookeeper://127.0.0.1:2181"/>-->
+    <!--<property name="nodeGroup" value="test_trade_TaskTracker"/>-->
+    <!--<property name="workThreads" value="20"/>-->
+    <!--&lt;!&ndash;<property name="masterChangeListeners">&ndash;&gt;-->
+      <!--&lt;!&ndash;<list>&ndash;&gt;-->
+        <!--&lt;!&ndash;<bean class="com.github.ltsopensource.example.support.MasterChangeListenerImpl"/>&ndash;&gt;-->
+      <!--&lt;!&ndash;</list>&ndash;&gt;-->
+    <!--&lt;!&ndash;</property>&ndash;&gt;-->
+    <!--<property name="configs">-->
+      <!--<props>-->
+        <!--<prop key="job.fail.store">leveldb</prop>-->
+      <!--</props>-->
+    <!--</property>-->
+  <!--</bean>-->
+  <bean id="jobRunner" class="com.lgren.school.student.timer.MyJobRunner"/>
+
+  <bean id="taskTracker" class="com.github.ltsopensource.spring.TaskTrackerXmlFactoryBean" init-method="start">
+    <property name="bizLoggerLevel" value="INFO"/>
+    <property name="clusterName" value="test_cluster"/>
+    <property name="registryAddress" value="zookeeper://127.0.0.1:2181"/>
+    <property name="nodeGroup" value="test_trade_TaskTracker"/>
+    <property name="workThreads" value="20"/>
+    <property name="configs">
+      <props>
+        <!--<prop key="job.fail.store">leveldb</prop>-->
+        <prop key="job.fail.store">mapdb</prop>
+        <prop key="lb.machine.res.check.enable">true</prop>
+        <prop key="lb.memoryUsedRate.max">90</prop>
+        <prop key="lb.cpuUsedRate.max">200</prop>
+      </props>
+    </property>
+    <lookup-method name="createJobRunner" bean="jobRunner" />
+  </bean>
+</beans>

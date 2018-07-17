@@ -15,6 +15,7 @@
   </modules>
   <properties>
     <aspectj.version>1.6.11</aspectj.version>
+    <lts.version>1.7.2-SNAPSHOT</lts.version>
     <jackson.version>2.7.4</jackson.version>
     <cglib.version>2.1_3</cglib.version>
     <fastjson.version>1.2.40</fastjson.version>
@@ -64,6 +65,27 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         <version>${spring.version}</version>
+      </dependency>
+      <!--json处理使用的包-->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
