@@ -38,4 +38,5 @@
   <import resource="classpath:applicationContext-springMVC.xml"/>
   <import resource="classpath:applicationContext-mybatis.xml"/>
   <import resource="classpath:spring-lts.xml"/>
+  <import resource="classpath:spring-activiti.xml"/>
 </beans>

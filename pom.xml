@@ -14,6 +14,7 @@
     <module>school-common</module>
   </modules>
   <properties>
+    <activiti.version>5.18.0</activiti.version>
     <aspectj.version>1.6.11</aspectj.version>
     <lts.version>1.7.2-SNAPSHOT</lts.version>
     <jackson.version>2.7.4</jackson.version>
