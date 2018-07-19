@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +18,11 @@
 <c:if test="${task.isSuccess() && task.getData() != null}">
     <div class="row" style="margin-bottom: 20px">
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-3" style="height: 150px">
                 <h3>任务信息</h3>
                 <span>任务ID:</span><span>${task.getData().get("task").get("id")}</span><br>
                 <span>任务属于:</span><span>${task.getData().get("task").get("assignee")}</span><br>
-                <span>任务创建时间:</span><span>${task.getData().get("task").get("createTime")}</span><br>
+                <span>任务创建时间:</span><span><fmt:formatDate value="${task.getData().get('task').get('createTime')}" pattern="yyyy-MM-dd HH:mm:ss"/></span><br>
             </div>
             <c:if test="${task.getData().get('variables') != null && task.getData().get('variables').size() > 0}">
                 <div class="col-xs-3">
@@ -74,11 +75,11 @@
 <c:forEach var="taskVar" items="${taskList.getData()}">
 <div class="row" style="margin-bottom: 20px">
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-xs-3" style="height: 150px">
             <h3>任务信息</h3>
             <span>任务ID:</span><span>${taskVar.get("task").get("id")}</span><br>
             <span>任务属于:</span><span>${taskVar.get("task").get("assignee")}</span><br>
-            <span>任务创建时间:</span><span>${taskVar.get("task").get("createTime")}</span><br>
+            <span>任务创建时间:</span><span>${taskVar.get('task').get('createTime')}</span><br>
         </div>
         <c:if test="${taskVar.get('variables') != null && taskVar.get('variables').size() > 0}">
             <div>

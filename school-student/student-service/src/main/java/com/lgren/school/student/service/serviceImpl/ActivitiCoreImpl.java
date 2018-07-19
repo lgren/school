@@ -71,8 +71,9 @@ public class ActivitiCoreImpl implements IActivitiCore {
         taskMap.put("processDefinitionId", task.getProcessDefinitionId());
         map.put("task", taskMap);
         Map historyMap = new HashMap();
+
         historyService.createHistoricVariableInstanceQuery().processInstanceId(task.getProcessInstanceId()).list()
-                .forEach(t -> historyMap.put(t.getVariableName(),t.getValue()));
+                .forEach(t -> historyMap.put(t.getVariableName(),t.getValue() instanceof Date ? DateFormatUtils.format(task.getCreateTime(), "yyyy-MM-dd HH:mm:ss") : t.getValue()));
         map.put("variables", isHistory == 0 ? taskService.getVariables(task.getId()) : historyMap);
         return map;
     }
