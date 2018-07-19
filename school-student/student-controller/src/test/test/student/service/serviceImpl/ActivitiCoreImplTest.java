@@ -12,10 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ActivitiCoreImplTest {
     @Autowired
     IActivitiCore activitiCore;
-    @Test
-    public void queryTaskList() {
-        activitiCore.queryTaskList();
-    }
 
     @Test
     public void queryTaskByTaskId() {

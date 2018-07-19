@@ -45,6 +45,12 @@ public class CommonResult<T> {
         this.message = message;
     }
 
+    public CommonResult(boolean success, String message, T data) {
+        this.success = success;
+        this.message = message;
+        this.data = data;
+    }
+
     public CommonResult(boolean success, String message, Integer errorCode, T data) {
         this.success = success;
         this.message = message;
@@ -62,14 +68,6 @@ public class CommonResult<T> {
                 '}';
     }
 
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
-
     public boolean isSuccess() {
         return success;
     }
@@ -84,6 +82,14 @@ public class CommonResult<T> {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Integer getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(Integer errorCode) {
+        this.errorCode = errorCode;
     }
 
     public T getData() {

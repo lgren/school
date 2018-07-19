@@ -5,8 +5,7 @@ import com.lgren.school.student.service.IActivitiCore;
 import com.lgren.school.student.service.IStudentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -34,7 +33,7 @@ public class StudentController {
     public CommonResult activitiCore(String method, String param) {
         switch (StringUtils.isEmpty(method)? "" : method) {
             default:
-            case "queryTaskList":return activitiCore.queryTaskList();
+            case "queryTaskList":return activitiCore.queryTaskList(StringUtils.isBlank(param) ? 0 : Integer.valueOf(param));
             case "queryDeployList":return activitiCore.queryDeployList();
             case "queryProcessList":return activitiCore.queryProcessList();
             case "queryTaskByTaskId":return activitiCore.queryTaskByTaskId(param);
@@ -54,4 +53,26 @@ public class StudentController {
         return activitiCore.completeTaskByTaskId(taskId, variables);
     }
 
+
+    @RequestMapping("taskComplete.do")
+    public CommonResult taskComplete(String taskId, String message, String description, String beginTime, String endTime) {
+        Map<String,Object> variables = new HashMap<>();
+        variables.put("createTime", new Date());
+        if (StringUtils.isNotBlank(message)) {
+            variables.put("message", message);
+        }
+        if (StringUtils.isNotBlank(description)) {
+            variables.put("description", description);
+        }
+        if (StringUtils.isNotBlank(beginTime)) {
+            variables.put("beginTime", beginTime);
+        }
+        if (StringUtils.isNotBlank(endTime)) {
+            variables.put("endTime", endTime);
+        }
+        if (StringUtils.isEmpty(taskId)) {
+            return new CommonResult(false, "参数不能为空");
+        }
+        return activitiCore.completeTaskByTaskId(taskId, variables);
+    }
 }

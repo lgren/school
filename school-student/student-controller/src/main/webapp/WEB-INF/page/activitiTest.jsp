@@ -1,16 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>activitiTest</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css"/>
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
-Test
-
-<script src="/webjars/jquery/jquery.min.js"></script>
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+${testttt}
+<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

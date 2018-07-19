@@ -33,14 +33,25 @@
   </listener>
 
   <!--通常的浏览器都只是支持post跟get，这时候就需要HiddenHttpMethodFilter 过滤器来将post请求转换为put跟delete请求(未使用过)-->
-  <!--<filter>
-          <filter-name>HiddenHttpMethodFilter</filter-name>
-          <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-      </filter>
-      <filter-mapping>
-          <filter-name>HiddenHttpMethodFilter</filter-name>
-          <url-pattern>/*</url-pattern>
-      </filter-mapping>-->
+  <!--<filter>-->
+  <!--<filter-name>HiddenHttpMethodFilter</filter-name>-->
+  <!--<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+  <!--<filter-name>HiddenHttpMethodFilter</filter-name>-->
+  <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
+
+  <!--加上这句话 put传参数可以接收到-->
+  <filter>
+    <filter-name>HttpPutFormContentFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HttpPutFormContentFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
 
   <!--spring mvc核心配置,此spring web应用程序的前端控制器，负责 处理所有应用程序请求-->
   <servlet>
@@ -52,11 +63,26 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.jpg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+
   <!--将所有请求映射到在以处理-->
   <servlet-mapping>
     <servlet-name>springDispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
 
   <!--默认首页-->
   <welcome-file-list>
