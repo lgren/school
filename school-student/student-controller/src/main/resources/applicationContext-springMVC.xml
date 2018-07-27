@@ -28,6 +28,6 @@
     <!--使用默认的Servlet来响应静态文件(如果不要这个,css,js等文件不能读取)-->
     <mvc:default-servlet-handler/>
 
-    <!--面对切面编程使用-->
-    <aop:aspectj-autoproxy/>
+    <!--面对切面编程使用 proxy-target-class="true" expose-proxy="true"-->
+    <aop:aspectj-autoproxy />
 </beans>

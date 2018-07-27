@@ -3,11 +3,16 @@ package com.lgren.school.student.service.serviceImpl;
 import com.lgren.school.student.dao.IStudentDao;
 import com.lgren.school.student.pojo.Student;
 import com.lgren.school.student.service.IStudentService;
+import com.lgren.school.student.service.aop.NotBlankTest;
+import com.lgren.school.student.service.aop.NotEmptyTest;
+import com.lgren.school.student.service.aop.NotNullTest;
+import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+
 @Service(value = "studentService")
 public class StudentServiceImpl implements IStudentService {
     private Logger logger = Logger.getLogger(StudentServiceImpl.class);
@@ -47,5 +52,22 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public List<Student> selectAll() {
         return studentDao.selectAll();
+    }
+
+    @Override
+    @NotNullTest
+    @NotBlankTest
+    @NotEmptyTest
+    public List<Object> aopTest(Integer a, String b, String c, Date d, Long e, Map f, List g, Set h) {
+        List<Object> list = new LinkedList<>();
+        list.add(a);
+        list.add(b);
+        list.add(c);
+        list.add(d);
+        list.add(e);
+        list.add(f);
+        list.add(g);
+        list.add(h);
+        return list;
     }
 }

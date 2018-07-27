@@ -34,9 +34,12 @@
       <!--</util:list>-->
     <!--</property>-->
   <!--</bean>-->
-  <import resource="classpath:dubbo-provider.xml"/>
-  <import resource="classpath:applicationContext-springMVC.xml"/>
+
+  <!--<import resource="classpath:dubbo-provider.xml"/>-->
   <import resource="classpath:applicationContext-mybatis.xml"/>
-  <import resource="classpath:spring-lts.xml"/>
+  <!--<import resource="classpath:spring-lts.xml"/>-->
   <import resource="classpath:spring-activiti.xml"/>
+
+  <!--面对切面编程使用  proxy-target-class="true" expose-proxy="true"-->
+  <aop:aspectj-autoproxy />
 </beans>

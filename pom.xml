@@ -15,7 +15,7 @@
   </modules>
   <properties>
     <activiti.version>5.18.0</activiti.version>
-    <aspectj.version>1.6.11</aspectj.version>
+    <aspectj.version>1.8.13</aspectj.version>
     <lts.version>1.7.2-SNAPSHOT</lts.version>
     <jackson.version>2.7.4</jackson.version>
     <cglib.version>2.1_3</cglib.version>

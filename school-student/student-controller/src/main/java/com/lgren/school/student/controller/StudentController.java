@@ -1,23 +1,28 @@
 package com.lgren.school.student.controller;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.lgren.common.vo.CommonResult;
 import com.lgren.school.student.service.IActivitiCore;
 import com.lgren.school.student.service.IStudentService;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class StudentController {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Date nowDate = new Date();
+
     @Autowired
     private IStudentService studentService;
     @Autowired
     private IActivitiCore activitiCore;
-
     @RequestMapping("index")
     public String index() {
         System.out.println(studentService.selectByPrimaryKey(1L));
@@ -74,5 +79,15 @@ public class StudentController {
             return new CommonResult(false, "参数不能为空");
         }
         return activitiCore.completeTaskByTaskId(taskId, variables);
+    }
+
+    @GetMapping("aopTest.do")
+    public List<Object> aopTest() {
+        logger.debug(this.getClass() + "aopTest()");
+
+        List list = Lists.newArrayList(1,2,43,2);
+        Set set = Sets.newHashSet(4,3,6,2);
+        Map map = ImmutableMap.of(1,3,2,2,3,1,5,3);
+        return studentService.aopTest(1,"32","43",nowDate,3232L,map,list,set);
     }
 }

@@ -1,5 +1,7 @@
 package com.lgren.school.student.pojo;
 
+import java.util.Objects;
+
 public class Bedroom {
     private Long id;
     private String area;
@@ -68,5 +70,23 @@ public class Bedroom {
 
     public void setRent(Double rent) {
         this.rent = rent;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bedroom bedroom = (Bedroom) o;
+        return Objects.equals(id, bedroom.id) &&
+                Objects.equals(area, bedroom.area) &&
+                Objects.equals(building, bedroom.building) &&
+                Objects.equals(houseNo, bedroom.houseNo) &&
+                Objects.equals(rent, bedroom.rent);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, area, building, houseNo, rent);
     }
 }
