@@ -49,7 +49,7 @@
     <!--mybatis全局配置(可以没有)-->
     <property name="configLocation" value="classpath:mybatis/configLocation.xml"></property>
     <!--映射配置文件地址(注解接口形式可以不要)-->
-    <property name="mapperLocations" value="classpath:com/lgren/school/student/mapper/*.xml"></property>
+    <property name="mapperLocations" value="classpath:com/lgren/school/student/mapper/StudentMapper.xml"></property>
   </bean>
 
   <!--mybatis接口自动扫描-->
