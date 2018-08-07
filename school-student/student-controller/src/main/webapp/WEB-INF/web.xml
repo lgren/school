@@ -31,7 +31,6 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-
   <!--通常的浏览器都只是支持post跟get，这时候就需要HiddenHttpMethodFilter 过滤器来将post请求转换为put跟delete请求(未使用过)-->
   <!--<filter>-->
   <!--<filter-name>HiddenHttpMethodFilter</filter-name>-->

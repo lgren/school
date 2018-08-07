@@ -24,8 +24,10 @@
 
   <bean id="taskTracker" class="com.github.ltsopensource.spring.TaskTrackerXmlFactoryBean" init-method="start">
     <property name="bizLoggerLevel" value="INFO"/>
+    <!--test_cluster-->
     <property name="clusterName" value="test_cluster"/>
     <property name="registryAddress" value="zookeeper://127.0.0.1:2181"/>
+    <!--test_trade_TaskTracker-->
     <property name="nodeGroup" value="test_trade_TaskTracker"/>
     <property name="workThreads" value="20"/>
     <property name="configs">

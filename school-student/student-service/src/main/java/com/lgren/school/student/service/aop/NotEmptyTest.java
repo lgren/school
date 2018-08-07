@@ -12,8 +12,5 @@ public @interface NotEmptyTest {
      * @Date 2018/7/27 17:58
      */
     int feedbackType() default 0;
-    boolean isSuccess() default true;
-    int errorCode() default 9999;
-    String errorMessage() default "参数错误";
-    String[] fieldNameArr() default {};
+    String errorMessage() default "";
 }

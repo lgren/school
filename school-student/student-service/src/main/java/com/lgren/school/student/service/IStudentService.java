@@ -1,5 +1,6 @@
 package com.lgren.school.student.service;
 
+import com.lgren.common.vo.CommonResult;
 import com.lgren.school.student.pojo.Student;
 import com.lgren.school.student.service.aop.NotBlankTest;
 import com.lgren.school.student.service.aop.NotNullTest;
@@ -25,5 +26,5 @@ public interface IStudentService {
 
     List<Student> selectAll();
 
-    List<Object> aopTest(Integer a, String b, String c , Date d, Long e, Map f, List g, Set h);
+    CommonResult aopTest(Integer a, String b, String c , Date d, Long e, Map f, List g, Set h);
 }

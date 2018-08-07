@@ -108,7 +108,8 @@ public class ActivitiCoreImpl implements IActivitiCore {
     @Override
     public CommonResult deployment(String deployName) {
         repositoryService.createDeployment().name(deployName)
-                .addClasspathResource("diagrams/leave/leaveComplexOne.bpmn").addClasspathResource("diagrams/leave/leaveComplexOne.png").deploy();
+                .addClasspathResource("diagrams/leave/leaveComplexOne.bpmn")
+                .addClasspathResource("diagrams/leave/leaveComplexOne.png").deploy();
         return new CommonResult(true, "部署成功");
     }
 

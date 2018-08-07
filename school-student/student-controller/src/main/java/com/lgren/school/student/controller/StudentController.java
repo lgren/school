@@ -30,8 +30,8 @@ public class StudentController {
     }
 
     @RequestMapping("selectAllStudent.do")
-    public CommonResult selectAllStudent() {
-        return new CommonResult(studentService.selectAll());
+    public CommonResult<List<com.lgren.school.student.pojo.Student>> selectAllStudent() {
+        return new CommonResult<>(studentService.selectAll());
     }
 
     @RequestMapping("activitiCore.do")
@@ -85,9 +85,9 @@ public class StudentController {
     public List<Object> aopTest() {
         logger.debug(this.getClass() + "aopTest()");
 
-        List list = Lists.newArrayList(1,2,43,2);
-        Set set = Sets.newHashSet(4,3,6,2);
-        Map map = ImmutableMap.of(1,3,2,2,3,1,5,3);
-        return studentService.aopTest(1,"32","43",nowDate,3232L,map,list,set);
+        List<Integer> list = Lists.newArrayList(1,2,43,2);
+        Set<Integer> set = Sets.newHashSet(4,3,6,2);
+        Map<Integer, Integer> map = ImmutableMap.of(1,3,2,2,3,1,5,3);
+        return (List<Object>) studentService.aopTest(1,"32","43",nowDate,3232L,map,list,set).getData();
     }
 }

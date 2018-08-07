@@ -35,9 +35,9 @@
     <!--</property>-->
   <!--</bean>-->
 
-  <!--<import resource="classpath:spring-dubbo-provider.xml"/>-->
+  <!--<import resource="classpath:spring/spring-dubbo-provider.xml"/>-->
   <import resource="classpath:spring/spring-mybatis.xml"/>
-  <!--<import resource="classpath:spring-lts.xml"/>-->
+  <import resource="classpath:spring/spring-lts.xml"/>
   <import resource="classpath:spring/spring-activiti.xml"/>
 
   <!--面对切面编程使用  proxy-target-class="true" expose-proxy="true"-->

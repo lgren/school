@@ -36,7 +36,7 @@ public class ActivitiCoreImplTest {
         Set set1 = Sets.newHashSet();
         Map map1 = new HashMap();
         System.out.println("\n");
-        System.out.println(studentService.aopTest(1,"32","43",nowDate,3232L,map,list,set));
+        System.out.println(studentService.aopTest(1,"32","43",nowDate,3232L,map1,list,set));
         System.out.println("\n");
     }
 

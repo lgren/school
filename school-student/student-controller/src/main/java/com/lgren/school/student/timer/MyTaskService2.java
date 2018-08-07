@@ -2,8 +2,8 @@ package com.lgren.school.student.timer;
 
 import org.springframework.stereotype.Service;
 
-@Service("myTaskService")
-public class MyTaskService {
+@Service("myTaskService2")
+public class MyTaskService2 {
 
     public void test() {
         System.out.println(this.getClass().getName() + "\ttest");

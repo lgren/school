@@ -1,5 +1,6 @@
 package com.lgren.school.student.service.serviceImpl;
 
+import com.lgren.common.vo.CommonResult;
 import com.lgren.school.student.dao.IStudentDao;
 import com.lgren.school.student.pojo.Student;
 import com.lgren.school.student.service.IStudentService;
@@ -55,10 +56,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    @NotNullTest
-    @NotBlankTest
-    @NotEmptyTest
-    public List<Object> aopTest(Integer a, String b, String c, Date d, Long e, Map f, List g, Set h) {
+    public CommonResult aopTest(Integer a, String b, @NotBlankTest(feedbackType = 4) String c, Date d, Long e, @NotEmptyTest Map f, List g, @NotNullTest Set h) {
         List<Object> list = new LinkedList<>();
         list.add(a);
         list.add(b);
@@ -68,6 +66,6 @@ public class StudentServiceImpl implements IStudentService {
         list.add(f);
         list.add(g);
         list.add(h);
-        return list;
+        return new CommonResult(list);
     }
 }
