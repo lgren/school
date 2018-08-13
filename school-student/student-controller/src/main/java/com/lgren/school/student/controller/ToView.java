@@ -1,12 +1,15 @@
 package com.lgren.school.student.controller;
 
-import com.lgren.common.vo.CommonResult;
+import com.lgren.common.CResult;
+import com.lgren.school.student.pojo.Student;
 import com.lgren.school.student.service.IActivitiCore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.Map;
 
 @Controller
@@ -31,7 +34,7 @@ public class ToView {
             map.put("taskList", activitiCore.queryTaskList(0));
             return "task";
         }
-            CommonResult<Map> serviceResult = activitiCore.queryTaskByTaskId(assigneeOrTaskIdOrIsHistory);
+            CResult<Map> serviceResult = activitiCore.queryTaskByTaskId(assigneeOrTaskIdOrIsHistory);
         if (!serviceResult.isSuccess()) {
             serviceResult = activitiCore.queryTaskByAssignee(assigneeOrTaskIdOrIsHistory);
         }
@@ -45,4 +48,9 @@ public class ToView {
         return "task";
     }
 
+    @GetMapping(value = "toInsertStudent")
+    public String toInsertStudent(Map<String, Student>map) {
+        map.put("student", new Student(1L, "tesd", "sdfsdt", "stdsd" , new Date()));
+        return "insertStudent";
+    }
 }

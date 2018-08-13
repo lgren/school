@@ -1,13 +1,12 @@
 package com.lgren.school.student.service.serviceImpl;
 
-import com.lgren.common.vo.CommonResult;
+import com.lgren.common.CResult;
 import com.lgren.school.student.dao.IStudentDao;
 import com.lgren.school.student.pojo.Student;
 import com.lgren.school.student.service.IStudentService;
 import com.lgren.school.student.service.aop.NotBlankTest;
 import com.lgren.school.student.service.aop.NotEmptyTest;
 import com.lgren.school.student.service.aop.NotNullTest;
-import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,7 +55,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public CommonResult aopTest(Integer a, String b, @NotBlankTest(feedbackType = 4) String c, Date d, Long e, @NotEmptyTest Map f, List g, @NotNullTest Set h) {
+    public CResult<List> aopTest(Integer a, String b, @NotBlankTest(feedbackType = 4) String c, Date d, Long e, @NotEmptyTest Map f, List g, @NotNullTest Set h) {
         List<Object> list = new LinkedList<>();
         list.add(a);
         list.add(b);
@@ -66,6 +65,6 @@ public class StudentServiceImpl implements IStudentService {
         list.add(f);
         list.add(g);
         list.add(h);
-        return new CommonResult(list);
+        return CResult.newSuccess(list);
     }
 }

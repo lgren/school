@@ -1,4 +1,4 @@
-package com.lgren.school.student.common;
+package com.lgren.common;
 
 import java.util.UUID;
 

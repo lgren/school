@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import com.lgren.school.student.service.IActivitiCore;
 import com.lgren.school.student.service.IStudentService;
 import com.lgren.school.student.service.aop.NotNullTest;
+import org.activiti.engine.RepositoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,8 @@ import java.util.*;
 public class ActivitiCoreImplTest {
     @Autowired
     private IActivitiCore activitiCore;
-
+    @Autowired
+    private RepositoryService repositoryService;
     @Autowired
     private IStudentService studentService;
 
@@ -38,6 +40,12 @@ public class ActivitiCoreImplTest {
         System.out.println("\n");
         System.out.println(studentService.aopTest(1,"32","43",nowDate,3232L,map1,list,set));
         System.out.println("\n");
+    }
+
+    @Test
+    public void deleteDeployment() {
+        studentService.selectAll();
+        System.out.println("删除成功");
     }
 
 }

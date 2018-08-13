@@ -1,19 +1,18 @@
 package com.lgren.school.student.service;
 
-import com.lgren.common.vo.CommonResult;
-import org.activiti.engine.task.TaskInfo;
+import com.lgren.common.CResult;
 
 import java.util.List;
 import java.util.Map;
 
 public interface IActivitiCore {
-    CommonResult<List<TaskInfo>> queryTaskList(Integer isHistory);
-    CommonResult<Map> queryTaskByTaskId(String taskId);
-    CommonResult<Map> queryTaskByAssignee(String assignee);
-    CommonResult completeTaskByTaskId(String taskId, Map<String,Object> variables);
-    CommonResult queryProcessList();
-    CommonResult queryDeployList();
+    CResult<List<Map>> queryTaskList(Integer isHistory);
+    CResult<Map> queryTaskByTaskId(String taskId);
+    CResult<Map> queryTaskByAssignee(String assignee);
+    CResult completeTaskByTaskId(String taskId, Map<String,Object> variables);
+    CResult queryProcessList();
+    CResult queryDeployList();
 
-    CommonResult startProcess(String processKey);
-    CommonResult deployment(String deployName);
+    CResult startProcess(String processKey);
+    CResult deployment(String deployName);
 }

@@ -3,7 +3,9 @@ package com.lgren.school.student.controller;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.lgren.common.vo.CommonResult;
+import com.lgren.common.CResult;
+import com.lgren.school.student.dao.IStudentDao;
+import com.lgren.school.student.pojo.Student;
 import com.lgren.school.student.service.IActivitiCore;
 import com.lgren.school.student.service.IStudentService;
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +25,8 @@ public class StudentController {
     private IStudentService studentService;
     @Autowired
     private IActivitiCore activitiCore;
+    @Autowired
+    private IStudentDao studentDao;
     @RequestMapping("index")
     public String index() {
         System.out.println(studentService.selectByPrimaryKey(1L));
@@ -30,12 +34,12 @@ public class StudentController {
     }
 
     @RequestMapping("selectAllStudent.do")
-    public CommonResult<List<com.lgren.school.student.pojo.Student>> selectAllStudent() {
-        return new CommonResult<>(studentService.selectAll());
+    public CResult<List<Student>> selectAllStudent() {
+        return CResult.newSuccess(studentService.selectAll());
     }
 
     @RequestMapping("activitiCore.do")
-    public CommonResult activitiCore(String method, String param) {
+    public CResult activitiCore(String method, String param) {
         switch (StringUtils.isEmpty(method)? "" : method) {
             default:
             case "queryTaskList":return activitiCore.queryTaskList(StringUtils.isBlank(param) ? 0 : Integer.valueOf(param));
@@ -49,18 +53,18 @@ public class StudentController {
     }
 
     @RequestMapping("activitiCoreComplete.do")
-    public CommonResult activitiCoreComplete(String taskId, String message, String description) {
+    public CResult activitiCoreComplete(String taskId, String message, String description) {
         Map<String,Object> variables = new HashMap<>();
         variables.put("createTime", new Date());
         variables.put("message", message);
         variables.put("description", description);
-        if (StringUtils.isEmpty(taskId)) { return new CommonResult(0, "参数不能为空"); }
+        if (StringUtils.isEmpty(taskId)) { CResult.newFailure(0, "参数不能为空"); }
         return activitiCore.completeTaskByTaskId(taskId, variables);
     }
 
 
     @RequestMapping("taskComplete.do")
-    public CommonResult taskComplete(String taskId, String message, String description, String beginTime, String endTime) {
+    public CResult taskComplete(String taskId, String message, String description, String beginTime, String endTime) {
         Map<String,Object> variables = new HashMap<>();
         variables.put("createTime", new Date());
         if (StringUtils.isNotBlank(message)) {
@@ -76,7 +80,7 @@ public class StudentController {
             variables.put("endTime", endTime);
         }
         if (StringUtils.isEmpty(taskId)) {
-            return new CommonResult(false, "参数不能为空");
+            return CResult.newFailure(9999, "参数不能为空");
         }
         return activitiCore.completeTaskByTaskId(taskId, variables);
     }
@@ -89,5 +93,11 @@ public class StudentController {
         Set<Integer> set = Sets.newHashSet(4,3,6,2);
         Map<Integer, Integer> map = ImmutableMap.of(1,3,2,2,3,1,5,3);
         return (List<Object>) studentService.aopTest(1,"32","43",nowDate,3232L,map,list,set).getData();
+    }
+
+    @RequestMapping("insertStudent.do")
+    public String insertStudent(Student student) {
+        System.out.println(student);
+        return "OK";
     }
 }

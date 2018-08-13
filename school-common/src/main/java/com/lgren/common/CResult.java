@@ -1,9 +1,11 @@
-package com.lgren.common.vo;
+package com.lgren.common;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class CommonResult<T> {
+/**
+ * @Description 公共返回结果
+ * @Author Lgren
+ * @Date 2018/8/10 8:47
+ */
+public class CResult<T> {
     //返回成功标识
     private boolean success;
     //信息
@@ -13,45 +15,30 @@ public class CommonResult<T> {
     //返回数据
     private T data;
 
-    public CommonResult() {
+    public static <T> CResult<T> newSuccess(T data) {
+        CResult<T> successCResult = new CResult<>();
+        successCResult.setSuccess(true);
+        successCResult.setData(data);
+        return successCResult;
+    }
+
+    public static <T> CResult<T> newFailure(String message) {
+        return newFailure(null, message);
+    }
+
+    public static <T> CResult<T> newFailure(Integer errorCode, String message) {
+        CResult<T> failureCResult = new CResult<>();
+        failureCResult.setSuccess(false);
+        failureCResult.setErrorCode(errorCode);
+        failureCResult.setMessage(message);
+        return failureCResult;
+    }
+
+    public CResult() {
 
     }
 
-    public CommonResult(T data) {
-        this.success = true;
-        this.data = data;
-    }
-
-    public CommonResult(String message, T data) {
-        this.success = true;
-        this.message = message;
-        this.data = data;
-    }
-
-    public CommonResult(boolean success, String message) {
-        this.success = success;
-        this.message = message;
-    }
-
-    public CommonResult(Integer errorCode, String message) {
-        this.success = false;
-        this.errorCode = errorCode;
-        this.message = message;
-    }
-
-    public CommonResult(boolean success, Integer errorCode, String message) {
-        this.success = success;
-        this.errorCode = errorCode;
-        this.message = message;
-    }
-
-    public CommonResult(boolean success, String message, T data) {
-        this.success = success;
-        this.message = message;
-        this.data = data;
-    }
-
-    public CommonResult(boolean success, String message, Integer errorCode, T data) {
+    public CResult(boolean success, String message, Integer errorCode, T data) {
         this.success = success;
         this.message = message;
         this.errorCode = errorCode;
@@ -60,7 +47,7 @@ public class CommonResult<T> {
 
     @Override
     public String toString() {
-        return "CommonResult{" +
+        return "CResult{" +
                 "success=" + success +
                 ", message='" + message + '\'' +
                 ", errorCode=" + errorCode +

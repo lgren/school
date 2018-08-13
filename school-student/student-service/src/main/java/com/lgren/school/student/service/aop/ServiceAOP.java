@@ -1,6 +1,6 @@
 package com.lgren.school.student.service.aop;
 
-import com.lgren.common.vo.CommonResult;
+import com.lgren.common.CResult;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +14,6 @@ import org.springframework.util.CollectionUtils;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 @Aspect
@@ -45,7 +44,7 @@ public class ServiceAOP {
     @Around("allParamNotNull()")
     public Object notNullValidate(ProceedingJoinPoint joinPoint) throws NoSuchMethodException {
         Object proceed = null;//程序返回值
-        CommonResult commonResult = null;
+        CResult cResult = null;
         Object[] params = joinPoint.getArgs();// 得到所有参数
         Method targetMethod = ((MethodSignature) joinPoint.getSignature()).getMethod();// 得到方法对象
         Method realMethod = joinPoint.getTarget().getClass().getDeclaredMethod(targetMethod.getName(), targetMethod.getParameterTypes());//获取真实方法对象
@@ -171,11 +170,11 @@ public class ServiceAOP {
                     case 3:proceed = proceed.getClass().newInstance();break;
                     case 4:{
                         if (type == 1) {
-                            commonResult = new CommonResult(false, returnMsg);
-//                commonResult = new CommonResult(false, "第" + number +"个参数为空");
+                            cResult = CResult.newFailure(returnMsg);
+//                cResult = new CResult(false, "第" + number +"个参数为空");
                         } else if (type == 2) {
-                            commonResult = new CommonResult(false, returnMsg);
-//                commonResult = new CommonResult(false, "第" + number +"个参数集合为空");
+                            cResult = CResult.newFailure(returnMsg);
+//                cResult = new CResult(false, "第" + number +"个参数集合为空");
                         }
                     }break;
                     default:break;
@@ -184,8 +183,8 @@ public class ServiceAOP {
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
-        if (commonResult != null) {
-            return commonResult;
+        if (cResult != null) {
+            return cResult;
         }
         return proceed;
     }

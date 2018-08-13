@@ -8,38 +8,38 @@
   <!--组件扫描(@Service等自动转换成bean, @Autotwired自动注入)-->
   <context:component-scan base-package="com.lgren">
     <!--放弃Controller的控制,交给spring mvc控制-->
-    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
-    <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"></context:exclude-filter>
+    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
   </context:component-scan>
 
-  <!--面对切面编程使用-->
+  <!--面对切面编程使用 proxy-target-class="true" expose-proxy="true"-->
   <aop:aspectj-autoproxy/>
 
-  <!--<bean id="xDiamondConfig"-->
-        <!--class="io.github.xdiamond.client.spring.XDiamondConfigFactoryBean">-->
-    <!--<property name="serverHost" value="${xdiamond.project.ip:127.0.0.1}" />-->
-    <!--<property name="serverPort" value="${xdiamond.server.port:5678}" />-->
-    <!--<property name="groupId" value="com.lgren" />-->
-    <!--<property name="artifactId" value="school" />-->
-    <!--<property name="version" value="1.0.0" />-->
-    <!--<property name="profile" value="${spring.profiles.active:test}" />-->
+  <!--<bean id="xDiamondConfig" class="io.github.xdiamond.client.spring.XDiamondConfigFactoryBean">-->
+    <!--<property name="serverHost" value="${xdiamond.project.ip:127.0.0.1}"/>-->
+    <!--<property name="serverPort" value="${xdiamond.server.port:5678}"/>-->
+    <!--<property name="groupId" value="com.lgren"/>-->
+    <!--<property name="artifactId" value="school"/>-->
+    <!--<property name="version" value="1.0.0"/>-->
+    <!--<property name="profile" value="${spring.profiles.active:test}"/>-->
     <!--<property name="secretKey" value="${xdiamond.project.secretkey:}"></property>-->
     <!--<property name="bPrintConfigWhenBoot" value="${xdiamond.print.config:true}"></property>-->
   <!--</bean>-->
   <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
     <!--<property name="propertiesArray">-->
       <!--<util:list>-->
-        <!--<bean class="java.util.Properties" factory-bean="xDiamondConfig" factory-method="getProperties">-->
-        <!--</bean>-->
+        <!--<bean class="java.util.Properties" factory-bean="xDiamondConfig" factory-method="getProperties"/>-->
       <!--</util:list>-->
     <!--</property>-->
   <!--</bean>-->
 
+  <!--配置参数-->
+  <context:property-placeholder location="classpath:properties/*.properties"/>
+
   <!--<import resource="classpath:spring/spring-dubbo-provider.xml"/>-->
   <import resource="classpath:spring/spring-mybatis.xml"/>
-  <import resource="classpath:spring/spring-lts.xml"/>
+  <import resource="classpath:spring/spring-redis.xml"/>
+  <!--<import resource="classpath:spring/spring-lts.xml"/>-->
   <import resource="classpath:spring/spring-activiti.xml"/>
 
-  <!--面对切面编程使用  proxy-target-class="true" expose-proxy="true"-->
-  <aop:aspectj-autoproxy />
 </beans>

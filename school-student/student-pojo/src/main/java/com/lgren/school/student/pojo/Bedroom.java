@@ -4,9 +4,13 @@ import java.util.Objects;
 
 public class Bedroom {
     private Long id;
+
     private String area;
+
     private String building;
+
     private String houseNo;
+
     private Double rent;
 
     public Bedroom() {

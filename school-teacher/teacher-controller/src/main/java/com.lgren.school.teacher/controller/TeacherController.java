@@ -1,6 +1,6 @@
 package com.lgren.school.teacher.controller;
 
-import com.lgren.common.vo.CommonResult;
+import com.lgren.common.CResult;
 import com.lgren.school.student.service.IStudentService;
 import com.lgren.school.teacher.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ public class TeacherController {
     private IStudentService studentService;
 
     @RequestMapping(value = "selectAllTeacher.do")
-    public CommonResult selectAllTeacher() {
-        return new CommonResult(teacherService.selectAll());
+    public CResult selectAllTeacher() {
+        return new CResult(teacherService.selectAll());
     }
     @RequestMapping(value = "selectAllStudent.do")
-    public CommonResult selectAllStudent() {
-        return new CommonResult(studentService.selectAll());
+    public CResult selectAllStudent() {
+        return new CResult(studentService.selectAll());
     }
 
     @RequestMapping(value = "test")

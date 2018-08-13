@@ -11,13 +11,19 @@ import com.google.common.collect.Multimap;
 import com.lgren.school.student.common.SpringContextUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * @Description 接收 LTS传入的参数 格式可以是{"method":"method1,method2"} OR {"testService":"method1" ,"test1Service":"method1"} 或者结合
+ *                  如果使用 method方式需要在此类配置默认类, 结合
+ * @Author Lgren
+ * @Date 2018/8/7 8:50
+ * @Param 
+ * @return 
+ */
 public class MyJobRunner implements JobRunner {
     private String defaultServiceStr = "myTaskService";//默认需要调用的类
 

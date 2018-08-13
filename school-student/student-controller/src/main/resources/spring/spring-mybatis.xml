@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mybatis="http://mybatis.org/schema/mybatis-spring" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
   <!--引入mysql.properties的配置-->
-  <context:property-placeholder location="classpath:properties/mysql.properties" />
 
   <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
         init-method="init" destroy-method="close">
@@ -45,11 +43,11 @@
   <!--sqlSessionFactory配置-->
   <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
     <!--对应连接池c3p0(必须有)-->
-    <property name="dataSource" ref="dataSource"></property>
+    <property name="dataSource" ref="dataSource"/>
     <!--mybatis全局配置(可以没有)-->
-    <property name="configLocation" value="classpath:mybatis/configLocation.xml"></property>
+    <property name="configLocation" value="classpath:mybatis/configLocation.xml"/>
     <!--映射配置文件地址(注解接口形式可以不要)-->
-    <property name="mapperLocations" value="classpath:com/lgren/school/student/mapper/StudentMapper.xml"></property>
+    <property name="mapperLocations" value="classpath:com/lgren/school/student/mapper/StudentMapper.xml"/>
   </bean>
 
   <!--mybatis接口自动扫描-->
@@ -57,7 +55,7 @@
 
   <!--事务管理-->
   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    <property name="dataSource" ref="dataSource"></property>
+    <property name="dataSource" ref="dataSource"/>
   </bean>
   <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
