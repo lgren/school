@@ -1,14 +1,13 @@
 package com.lgren.school.student.controller;
 
 import com.lgren.common.CResult;
-import com.lgren.school.student.pojo.Student;
+import com.lgren.school.student.pojo.*;
 import com.lgren.school.student.service.IActivitiCore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 
@@ -53,4 +52,10 @@ public class ToView {
         map.put("student", new Student(1L, "tesd", "sdfsdt", "stdsd" , new Date()));
         return "insertStudent";
     }
+
+    @GetMapping(value = "toListTest")
+    public String toListTest() {
+        return "listTest";
+    }
+
 }

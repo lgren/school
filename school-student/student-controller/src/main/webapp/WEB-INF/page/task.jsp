@@ -58,9 +58,9 @@
                     </c:when>
                     <c:when test="${task.getData().get('task').get('assignee').equals('李四')}">
                         <div class="form-group">
-                            <label for="message${task.getData().get("task").get("id")}"
+                            <label for="errorMsg${task.getData().get("task").get("id")}"
                                    class="control-label">给予意见:</label>
-                            <input id="message${task.getData().get("task").get("id")}" name="message" type="text"
+                            <input id="errorMsg${task.getData().get("task").get("id")}" name="errorMsg" type="text"
                                    class="form-control"/>
                         </div>
                     </c:when>
@@ -112,8 +112,8 @@
                     </c:when>
                     <c:when test="${taskVar.get('task').get('assignee').equals('李四')}">
                         <div class="form-group">
-                            <label for="message${taskVar.get("task").get("id")}" class="control-label">给予意见:</label>
-                            <input id="message${taskVar.get("task").get("id")}" name="message" type="text"
+                            <label for="errorMsg${taskVar.get("task").get("id")}" class="control-label">给予意见:</label>
+                            <input id="errorMsg${taskVar.get("task").get("id")}" name="errorMsg" type="text"
                                    class="form-control"/>
                         </div>
                     </c:when>
@@ -131,7 +131,7 @@
     <script type="text/javascript">
         function startProcess() {
             $.ajax({
-                url: "/activitiCore.do?method=startProcess&param=leave",
+                url: "/activitiCore.do/startProcess?param=leave",
                 type: "get",
                 success: function (data) {
                     console.log(data);
@@ -147,7 +147,7 @@
                 data: {
                     "taskId": taskId,
                     "endTime": $node.find("#endTime" + taskId).val(),
-                    "message": $node.find("#message" + taskId).val(),
+                    "errorMsg": $node.find("#errorMsg" + taskId).val(),
                     "beginTime": $node.find("#beginTime" + taskId).val(),
                     "description": $node.find("#description" + taskId).val()
                 },

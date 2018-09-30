@@ -44,7 +44,7 @@ public class ActivitiCoreImplTest {
 
     @Test
     public void deleteDeployment() {
-        studentService.selectAll();
+        repositoryService.createDeploymentQuery().list();
         System.out.println("删除成功");
     }
 

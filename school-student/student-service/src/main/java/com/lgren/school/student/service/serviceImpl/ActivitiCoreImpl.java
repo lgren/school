@@ -5,6 +5,7 @@ import com.lgren.school.student.service.IActivitiCore;
 import org.activiti.engine.*;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,6 +82,7 @@ public class ActivitiCoreImpl implements IActivitiCore {
 
     @Override
     public CResult<String> completeTaskByTaskId(String taskId, Map<String, Object> variables) {
+        variables.put("message", Objects.equals(variables.get("message"), "重要")? "重要" : "不重要");
         try {
             taskService.complete(taskId, variables);
         } catch (Exception e) {
@@ -92,12 +94,12 @@ public class ActivitiCoreImpl implements IActivitiCore {
 
     @Override
     public CResult queryProcessList() {
-        return null;
+        return CResult.newSuccess(repositoryService.createProcessDefinitionQuery().list());
     }
 
     @Override
     public CResult queryDeployList() {
-        return null;
+        return CResult.newSuccess(repositoryService.createDeploymentQuery().list());
     }
 
     @Override
@@ -116,6 +118,19 @@ public class ActivitiCoreImpl implements IActivitiCore {
                 .addClasspathResource("diagrams/leave/leaveComplexOne.bpmn")
                 .addClasspathResource("diagrams/leave/leaveComplexOne.png").deploy();
         return CResult.newSuccess("部署成功");
+    }
+
+    @Override
+    public String getSuperior(String person) {
+        switch (person) {
+            case "applicant": return "person1";
+            case "person1": return "person2";
+            case "person2": return "person3";
+            case "person3": return "person4";
+            case "person4": return "person5";
+            case "person5": return "person6";
+            default: return null;
+        }
     }
 
 }

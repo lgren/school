@@ -36,7 +36,8 @@
   <!--配置参数-->
   <context:property-placeholder location="classpath:properties/*.properties"/>
 
-  <!--<import resource="classpath:spring/spring-dubbo-provider.xml"/>-->
+  <import resource="classpath:spring/spring-dubbo-provider.xml"/>
+  <!--<import resource="classpath:spring/spring-dubbo-provider-jjsmkt.xml"/>-->
   <import resource="classpath:spring/spring-mybatis.xml"/>
   <import resource="classpath:spring/spring-redis.xml"/>
   <!--<import resource="classpath:spring/spring-lts.xml"/>-->

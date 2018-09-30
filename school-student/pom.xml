@@ -36,6 +36,11 @@
       <artifactId>commons-lang3</artifactId>
       <version>${commons-lang3.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.8.3</version>
+    </dependency>
     <!--spring核心 包含spring aop, beans, core, expression-->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -135,6 +140,11 @@
       <!--<version>1.0.0</version>-->
     <!--</dependency>-->
     <!--redis end -->
+    <dependency>
+      <groupId>com.jjshome.fang.online.esf</groupId>
+      <artifactId>fang-api-client</artifactId>
+      <version>1.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

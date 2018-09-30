@@ -1,11 +1,13 @@
 package com.lgren.school.student.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.lgren.common.CResult;
 import com.lgren.school.student.dao.IStudentDao;
-import com.lgren.school.student.pojo.Student;
+import com.lgren.school.student.pojo.*;
 import com.lgren.school.student.service.IActivitiCore;
 import com.lgren.school.student.service.IStudentService;
 import org.apache.commons.lang3.StringUtils;
@@ -38,8 +40,8 @@ public class StudentController {
         return CResult.newSuccess(studentService.selectAll());
     }
 
-    @RequestMapping("activitiCore.do")
-    public CResult activitiCore(String method, String param) {
+    @RequestMapping({"activitiCore.do/{method}","activitiCore.do"})
+    public CResult activitiCore(@PathVariable("method") String method, String param) {
         switch (StringUtils.isEmpty(method)? "" : method) {
             default:
             case "queryTaskList":return activitiCore.queryTaskList(StringUtils.isBlank(param) ? 0 : Integer.valueOf(param));
@@ -82,6 +84,9 @@ public class StudentController {
         if (StringUtils.isEmpty(taskId)) {
             return CResult.newFailure(9999, "参数不能为空");
         }
+        Student student = new Student();
+        student.setRealName("刘宏宇");
+        variables.put("endTime", student);
         return activitiCore.completeTaskByTaskId(taskId, variables);
     }
 
@@ -99,5 +104,46 @@ public class StudentController {
     public String insertStudent(Student student) {
         System.out.println(student);
         return "OK";
+    }
+
+
+
+
+
+
+    @RequestMapping(value = "listTestGrandFather.do")
+    public String toListTestGrandFather(@RequestBody ListTestGrandFather grandFather) {
+        System.out.println(grandFather);
+        return grandFather.toString();
+    }
+
+    @RequestMapping(value = "listTestFather.do")
+    public String toListTestFather(@RequestBody ListTestFather father) {
+        System.out.println(father);
+        return father.toString();
+    }
+
+    @RequestMapping(value = "listTest.do")
+    public String toListTest(@RequestBody ListTest myself) {
+        System.out.println(myself);
+        return myself.toString();
+    }
+
+    @RequestMapping(value = "listTestChild.do")
+    public String toListTestChild(@RequestBody ListTestChild child) {
+        System.out.println(child);
+        return child.toString();
+    }
+
+    @RequestMapping(value = "listTestChildList.do")
+    public String toListTestChild(@RequestBody List<ListTestChild> listTestChildList) {
+        System.out.println(listTestChildList);
+        return listTestChildList.toString();
+    }
+
+    @RequestMapping(value = "json.do")
+    public String toListTestChild(String json) {
+        System.out.println(json);
+        return json;
     }
 }

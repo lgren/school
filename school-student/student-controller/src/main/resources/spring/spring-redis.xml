@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <!-- 连接池配置 -->
@@ -27,9 +27,17 @@
     <property name="blockWhenExhausted" value="${redis.pool.blockWhenExhausted}"/>
   </bean>
 
-  <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-    <constructor-arg name="host" value="${redis.ip}"/>
-    <constructor-arg name="port" value="${redis.port}"/>
-    <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+  <!--<bean id="jedisPool" class="redis.clients.jedis.JedisPool">-->
+    <!--<constructor-arg name="host" value="${redis.ip}"/>-->
+    <!--<constructor-arg name="port" value="${redis.port}"/>-->
+    <!--<constructor-arg name="poolConfig" ref="jedisPoolConfig"/>-->
+  <!--</bean>-->
+
+
+  <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+        p:host-name="${redis.ip}" p:port="${redis.port}" p:password="${redis.pass}"  p:pool-config-ref="jedisPoolConfig"/>
+
+  <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+    <property name="connectionFactory"   ref="connectionFactory" />
   </bean>
 </beans>

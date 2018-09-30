@@ -144,7 +144,6 @@ public class SnowflakeIdWorker {
         System.out.println(Long.toBinaryString(idWorker.nextId()));
         System.out.println(Long.toBinaryString(idWorker01.nextId()));
         System.out.println(Long.toBinaryString(idWorker01.nextId()));
-
         UUID uuid1 = UUID.randomUUID();
         UUID uuid2 = UUID.randomUUID();
         UUID uuid3 = UUID.randomUUID();

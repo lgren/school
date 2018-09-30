@@ -15,4 +15,6 @@ public interface IActivitiCore {
 
     CResult startProcess(String processKey);
     CResult deployment(String deployName);
+
+    String getSuperior(String person);
 }
