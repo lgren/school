@@ -20,5 +20,6 @@ public class AppTest
     public void shouldAnswerWithTrue() {
         Student student = new Student(1L,"test","test","test", new Date());
         System.out.println(student.getBirthday());
+        System.out.println();
     }
 }
