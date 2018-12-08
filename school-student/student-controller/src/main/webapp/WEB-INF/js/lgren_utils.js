@@ -132,7 +132,7 @@ function formToJson(from, parseJsonFieldArrOrString) {
 
 /**
  * 获取例如 "测试{name},再次测试{user}"中的 name和 user字段并返回一个 例如["name", "user"]的数组
- * getStrArrBeteenOfTwoStr("测试{name},再次测试{user}","{","}") = ["name", "user"];
+ * getStrArrBetweenOfTwoStr("测试{name},再次测试{user}","{","}") = ["name", "user"];
  * @create 2018/9/5 13:31
  * @author Lgren
  */
